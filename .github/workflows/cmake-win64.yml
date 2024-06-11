@@ -84,7 +84,7 @@ jobs:
              git clone -c advice.detachedHead=false -b "v4.6.0" --depth 1 https://gitlab.com/libtiff/libtiff.git
              cd libtiff
              cmake -Bbuild -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${{env.ILOC}} -DCMAKE_INSTALL_PREFIX=${{env.ILOC}} -Dtiff-tools=OFF -Dtiff-tests=OFF -Dtiff-contrib=OFF -Dtiff-docs=OFF
-             cmake --build build --target install
+             cmake --build build --config RelWithDebInfo --target install
              cd ..
 
       - name: Build and Install leptonica
@@ -105,7 +105,7 @@ jobs:
         shell: cmd
         run: |
              cmake -Bbuild -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${{env.ILOC}} -DCMAKE_INSTALL_PREFIX=${{env.ILOC}} -DSW_BUILD=OFF -DBUILD_SHARED_LIBS=ON -DENABLE_LTO=ON -DBUILD_TRAINING_TOOLS=OFF -DFAST_FLOAT=ON -DGRAPHICS_DISABLED=ON -DOPENMP_BUILD=OFF
-             cmake --build build --target install
+             cmake --build build --config RelWithDebInfo --target install
 
       - name: Upload Build Results
         uses: actions/upload-artifact@v4
