@@ -9,7 +9,7 @@ on:
 
 env:
   ILOC: d:/a/local
-  png_ver: 1643
+  png_ver: 1644
 
 jobs:
   build:
