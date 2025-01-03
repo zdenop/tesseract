@@ -894,11 +894,13 @@ endif()
 
 # ##############################################################################
 
+enable_testing()
 if(BUILD_TESTS
    AND EXISTS
        ${CMAKE_CURRENT_SOURCE_DIR}/unittest/third_party/googletest/CMakeLists.txt
 )
   add_subdirectory(unittest/third_party/googletest)
+  add_subdirectory(unittest)
 endif()
 
 if(BUILD_TRAINING_TOOLS)
