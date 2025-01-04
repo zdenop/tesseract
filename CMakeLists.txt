@@ -526,6 +526,7 @@ message(STATUS "General configuration for Tesseract ${PACKAGE_VERSION}")
 message(STATUS "--------------------------------------------------------")
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE} ${BUILD_ARCH}")
 message(STATUS "Compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "Compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "Used standard: C++${CMAKE_CXX_STANDARD}")
 message(STATUS "CXX compiler options: ${COMPILER_FLAGS}")
 get_directory_property(DirCompDefs COMPILE_DEFINITIONS)
@@ -894,11 +895,11 @@ endif()
 
 # ##############################################################################
 
-enable_testing()
 if(BUILD_TESTS
    AND EXISTS
        ${CMAKE_CURRENT_SOURCE_DIR}/unittest/third_party/googletest/CMakeLists.txt
 )
+  enable_testing()
   add_subdirectory(unittest/third_party/googletest)
   add_subdirectory(unittest)
 endif()
