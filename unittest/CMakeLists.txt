@@ -16,7 +16,7 @@ set(COMMON_INCLUDE_DIRS
 set(COMMON_COMPILE_DEFINITIONS
     "-DTESTING_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/../test/testing\""
     "-DTESSDATA_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/../tessdata\""
-    "-DTESSBIN_DIR=\"${CMAKE_CURRENT_BINARY_DIR}/../bin\""
+    "-DTESSBIN_DIR=\"${EXECUTABLE_OUTPUT_PATH}/$<CONFIG>\""
     "-DTESTDATA_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/../test/testdata\""
     "-DLANGDATA_DIR=\"${CMAKE_CURRENT_SOURCE_DIR}/../langdata_lstm\"")
 
@@ -79,7 +79,6 @@ set(TATWEEL_TEST_EXTRA_SRC util/utf8/unilib.cc util/utf8/unicodetext.cc
                            third_party/utf/rune.c)
 
 message(STATUS "Enabled tests: ${TEST_SOURCES}")
-message(STATUS "COMMON_INCLUDE_DIRS: ${COMMON_INCLUDE_DIRS}")
 
 foreach(test_source IN LISTS TEST_SOURCES)
   get_filename_component(test_name ${test_source} NAME_WE)
