@@ -55,8 +55,8 @@ jobs:
              brew install libarchive
            fi
            brew install pango
-           if ! brew list icu &>/dev/null; then
-             brew install icu
+           if ! brew list icu4c &>/dev/null; then
+             brew install icu4c
            fi
            if ! brew list curl &>/dev/null; then
              brew install curl
