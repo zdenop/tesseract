@@ -51,8 +51,16 @@ jobs:
         run: |
            brew install autoconf automake
            brew install leptonica
-           # brew install libarchive
+           if ! brew list libarchive &>/dev/null; then
+             brew install libarchive
+           fi
            brew install pango
+           if ! brew list icu &>/dev/null; then
+             brew install icu
+           fi
+           if ! brew list curl &>/dev/null; then
+             brew install curl
+           fi
            brew install cabextract
            ninja --version
            cmake --version
