@@ -51,9 +51,9 @@ jobs:
         run: |
            brew install autoconf automake
            brew install leptonica
-           ; if ! brew list libarchive &>/dev/null; then
-           ;   brew install libarchive
-           ; fi
+           # if ! brew list libarchive &>/dev/null; then
+           #   brew install libarchive
+           # fi
            brew install pango
            if ! brew list icu4c &>/dev/null; then
              brew install icu4c
