@@ -47,6 +47,8 @@ jobs:
       #- name: Uninstall Perl
       #  run: |
       #    choco uninstall strawberryperl
+      - name: Install ICU2
+        run: choco install icu -y
 
       - name: Build and Install zlib-ng
         shell: cmd
