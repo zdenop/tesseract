@@ -48,6 +48,7 @@ jobs:
       #  run: |
       #    choco uninstall strawberryperl
       - name: Install ICU
+        id: get_icu
         shell: cmd
         run: |
           curl -L -o icu.zip https://github.com/unicode-org/icu/releases/download/release-78-1/icu4c-78_1-Win64-MSVC2022.zip
@@ -117,7 +118,7 @@ jobs:
       - name: Build and Install tesseract
         shell: cmd
         run: |
-             cmake -Bbuild -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${{env.ILOC}};%ICU_ROOT%  -DCMAKE_INSTALL_PREFIX=${{env.ILOC}} -DBUILD_SHARED_LIBS=ON -DENABLE_LTO=ON -DBUILD_TRAINING_TOOLS=ON -DFAST_FLOAT=ON -DGRAPHICS_DISABLED=ON -DOPENMP_BUILD=OFF
+             cmake -Bbuild -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${{env.ILOC}};${{env.ILOC}}\icu;${{steps.get_icu.outputs.ICU_ROOT}} -DCMAKE_INSTALL_PREFIX=${{env.ILOC}} -DBUILD_SHARED_LIBS=ON -DENABLE_LTO=ON -DBUILD_TRAINING_TOOLS=ON -DFAST_FLOAT=ON -DGRAPHICS_DISABLED=ON -DOPENMP_BUILD=OFF
              cmake --build build --target install
 
       - name: Upload Build Results
